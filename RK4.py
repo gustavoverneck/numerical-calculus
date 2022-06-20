@@ -10,9 +10,9 @@ class RK4:
         self.function = str(input("Insira a expressão da equação: "))
         self.x0 = float(input("Insira x inicial: "))
         self.t0 = float(input("Insira t inicial: "))
-        self.x = float(input("Insira o x final: "))
-        self.n = int(input("Insira o número de passos: "))
-        self.h = (self.x - self.x0)/self.n     # Step size
+        self.t = float(input("Insira o t final: "))
+        self.tf = self.t
+        self.h = 0.0001
         self.resT = []
         self.resX = []
         self.runRK4()
@@ -27,7 +27,7 @@ class RK4:
         return self.h*(self.f(t + 0.5 * self.h, x + 0.5 * self.k1(t, x)))
     
     def k3(self, t, x):
-        return self.h * self.f(self.t0 + 0.5 * self.h, self.x + 0.5* self.k2(t, x))
+        return self.h * self.f(self.t0 + 0.5 * self.h, x + 0.5* self.k2(t, x))
 
     def k4(self, t, x):
         return self.h * self.f(self.x0 + self.h, t + self.k3(x, t))
@@ -43,11 +43,11 @@ class RK4:
         self.t0 += self.h
     
     def storageResults(self, t, x):
-        self.resT.append(x)
-        self.resX.append(t)
+        self.resT.append(t)
+        self.resX.append(x)
 
     def runRK4(self):
-        for i in range(self.n):
+        while self.t0 <= self.tf:
             self.calculate_k()
         self.plotGraph()
 
@@ -57,7 +57,6 @@ class RK4:
         plt.title("Position over time")
         plt.plot(self.resT, self.resX)
         plt.show()
-        
 
 def main():
     RK4()
