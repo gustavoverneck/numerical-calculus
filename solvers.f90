@@ -1,24 +1,12 @@
-program teste
+module  numerical_recipes
     implicit none
-
-    real :: a, b, c
-    real :: start, finish
-
-!   Start time cout
-    call cpu_time(start)
-
-!   exemplo: bhaskaraSolver(a, b, c)
-
-
-
-!   End time count
-    call cpu_time(finish)
-    print '("Total execution tome: ",f6.3," seconds.")',finish-start
 
     contains
 
-    function bhaskaraSolver (a, b, c)
-c   upgrade futuro -> adicionar opção para enviar output complexo
+!   -------------------------------------------------
+!   Bhaskara solver
+!   Solves a second degree equation of type ax²+bx+c=0
+    function bhaskaraSolver(a, b, c)
         implicit none
         real, dimension(2) :: bhaskaraSolver
         real, intent(in) :: a, b, c
@@ -37,11 +25,60 @@ c   upgrade futuro -> adicionar opção para enviar output complexo
         return
     end function BhaskaraSolver
 
-    function gaussJordan (x)
+!   -------------------------------------------------
+!   Gauss-Jordan solver
+!   Linearizes Matrix - Solves System of equations
+!   FAZER
+    function gaussJordan(a)
         implicit none
-        real, dimension(:) :: x
-c       adicionar método gauss-jordan
-        print*, 
-    end function
+        
+        integer :: i, j, k
+        real, dimension(:, :), intent(in) :: a
+        real :: n, gaussJordan
 
-end program teste
+        n = size(a)
+        gaussJordan = n
+        return
+    end function gaussJordan
+
+!   -------------------------------------------------
+!   FAZER
+!   Cubic Spline Interpolation
+    function cubicSpline()
+        implicit none
+        return
+    !declarar variaveis
+    
+    end function cubicSpline
+
+!   -------------------------------------------------
+!   FAZER (Numerical Recipes páginas 382~286)
+!   Broyden's Method
+!   Solves non-linear systems of equations
+    function broyden(x)
+        implicit none
+        return
+    end function broyden
+
+!   -------------------------------------------------
+!   FAZER
+!   Integration
+!   ADICIONAR MÉTODO DE INTEGRAÇÃO EM 1 OU MAIS DIMENSÕES
+    function integrate(x)
+        implicit none
+        return
+    end function integrate
+
+
+!   -------------------------------------------------
+!   FAZER
+!   Fast Fourier Transform
+    function fft()
+        implicit none
+        return
+    end function fft
+
+
+
+
+end module solvers
