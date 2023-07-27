@@ -2,7 +2,6 @@ module  numerical_recipes
     implicit none
 
     contains
-
 !   -------------------------------------------------
 !   Bhaskara solver
 !   Solves a second degree equation of type ax²+bx+c=0
@@ -70,25 +69,12 @@ module  numerical_recipes
                 a(j, k) = a(j, k) / m
             end do
         end do
-        diagonalize = a(n + 1, :)
+        
+        do k = 1, n, 1
+            diagonalize(k) = a(k, n+1)
+        end do
+        
         return
     end function diagonalize
 
 end module numerical_recipes
-!   -------------------------------------------------
-!   FAZER
-!   Cubic Spline Interpolation
-
-!   -------------------------------------------------
-!   FAZER (Numerical Recipes páginas 382~286)
-!   Broyden's Method
-!   Solves non-linear systems of equations
-
-!   -------------------------------------------------
-!   FAZER
-!   Integration
-!   ADICIONAR MÉTODO DE INTEGRAÇÃO EM 1 OU MAIS DIMENSÕES
-
-!   -------------------------------------------------
-!   FAZER
-!   Fast Fourier Transform
